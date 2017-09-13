@@ -331,6 +331,11 @@ When nil, this segment will only display when in a fullscreen frame."
   "Face for `all-the-icons' info feedback in the modeline."
   :group 'spaceline-all-the-icons)
 
+(defface spaceline-all-the-icons-which-function-face
+  '((t (:inherit powerline-active2)))
+  "Face for `spaceline-all-the-icons-which-function' segment in the modeline."
+  :group 'spaceline-all-the-icons)
+
 ;;; Helper functions
 (defun spaceline-all-the-icons--separator (icon &optional left-padding right-padding)
   "Wrapper to render vertical line separator ICON with optional LEFT-PADDING & RIGHT-PADDING."
@@ -1102,9 +1107,8 @@ available updates then restores the current buffer."
          (unknown? (string= current which-func-unknown))
          (function-icon (all-the-icons-fileicon "cold-fusion" :v-adjust 0))
          (question-icon (all-the-icons-faicon "question"))
-
-         (text-face `(:family ,(all-the-icons-faicon-family) :inherit))
-         (icon-face `(:family ,(all-the-icons-fileicon-family) :inherit)))
+         (text-face `(:family ,(all-the-icons-faicon-family) :inherit spaceline-all-the-icons-which-function-face))
+         (icon-face `(:family ,(all-the-icons-fileicon-family) :inherit spaceline-all-the-icons-which-function-face)))
 
     (when (string-match "{\\(.*\\)}" current) (setq current (match-string 1 current)))
 
@@ -1112,7 +1116,7 @@ available updates then restores the current buffer."
       (propertize
        (concat (propertize function-icon 'face icon-face) " "
                (propertize (if unknown? question-icon current)
-                           'face (if unknown? text-face `(:height ,(spaceline-all-the-icons--height 0.8) :inherit))
+                           'face (if unknown? text-face `(:height ,(spaceline-all-the-icons--height 0.8) :inherit spaceline-all-the-icons-which-function-face))
                            'display '(raise 0.2)))
        'mouse-face (spaceline-all-the-icons--highlight)
        'local-map which-func-keymap
