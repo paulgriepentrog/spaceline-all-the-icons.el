@@ -139,6 +139,7 @@ These segments can have one of the following icon sets
 | `modified` | `chain`, `toggle`, `circle` |
 | `bookmark` | `bookmark`, `heart`, `star` |
 | `dedicated` | `pin`, `sticky-note` |
+| `which-function` | `atomic`, `cursive` |
 | `window-numbering` | `circle`, `solid`, `string`, `square` |
 | `eyebrowse-workspace` | `circle`, `solid`, `string`, `square` |
 | `multiple-cursors` | `caret`, `pointer` |

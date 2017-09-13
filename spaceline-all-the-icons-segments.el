@@ -139,6 +139,19 @@
           (const :tag "Normal String  - 1" string)
           (const :tag ,(format "Square         - %s" (all-the-icons-material "filter_1" :v-adjust 0.0)) square)))
 
+;;; Which Function Icon
+(define-spaceline-all-the-icons--icon-set-getter "which-function")
+(defcustom spaceline-all-the-icons-icon-set-which-function 'cursive
+  "The Icon set to use for the `all-the-icons-which-function' indicator."
+  :group 'spaceline-all-the-icons-icon-set
+  :type `(radio
+          (const :tag ,(format "Atomic  - %s" (all-the-icons-fileicon "jsx")) atomic)
+          (const :tag ,(format "Cursive - %s" (all-the-icons-fileicon "cold-fusion" :v-adjust 0)) cursive)))
+
+(defconst spaceline-all-the-icons-icon-set--which-function
+  `((atomic ,(all-the-icons-fileicon "jsx" :v-adjust 0.1))
+    (cursive ,(all-the-icons-fileicon "cold-fusion" :v-adjust 0))))
+
 ;;; Eyebrowse Icon
 (defcustom spaceline-all-the-icons-icon-set-eyebrowse-slot 'circle
   "The Icon set to use for the `all-the-icons-eyebrowse-slot' indicator."
@@ -1105,7 +1118,7 @@ available updates then restores the current buffer."
   "An `all-the-icons' segment to show the `which-function-mode' function"
   (let* ((current (format-mode-line which-func-current))
          (unknown? (string= current which-func-unknown))
-         (function-icon (all-the-icons-fileicon "cold-fusion" :v-adjust 0))
+         (function-icon (spaceline-all-the-icons-icon-set-which-function))
          (question-icon (all-the-icons-faicon "question"))
          (text-face `(:family ,(all-the-icons-faicon-family) :inherit spaceline-all-the-icons-which-function-face))
          (icon-face `(:family ,(all-the-icons-fileicon-family) :inherit spaceline-all-the-icons-which-function-face)))
